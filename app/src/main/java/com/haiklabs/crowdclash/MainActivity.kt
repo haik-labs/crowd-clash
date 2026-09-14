@@ -27,7 +27,8 @@ private val Cream = Color(0xFFFFF8E8)
 private val Mint = Color(0xFF57D6B0)
 
 class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) = super.onCreate(savedInstanceState) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         setContent { MaterialTheme(colorScheme = darkColorScheme(primary = Purple, secondary = Coral, background = Navy, surface = Color(0xFF1C2040))) { CrowdClash() } }
     }
 }
@@ -135,4 +136,3 @@ class MainActivity : ComponentActivity() {
 @Composable private fun SmallButton(text: String, color: Color, modifier: Modifier, onClick: () -> Unit) = Button(onClick, modifier.height(48.dp), colors = ButtonDefaults.buttonColors(containerColor = color), contentPadding = PaddingValues(4.dp), shape = RoundedCornerShape(12.dp)) { Text(text, fontWeight = FontWeight.Bold, fontSize = 11.sp, color = if (color == Mint) Navy else Color.White) }
 @Composable private fun TeamChoice(text: String, color: Color, selected: Boolean, modifier: Modifier, click: () -> Unit) = Surface(modifier.clickable(onClick = click), color = if (selected) color else Color(0xFF252A50), shape = RoundedCornerShape(14.dp), border = if (selected) null else androidx.compose.foundation.BorderStroke(1.dp, color.copy(alpha = .5f))) { Text(text, Modifier.padding(16.dp), textAlign = TextAlign.Center, fontWeight = FontWeight.Bold) }
 @Composable private fun ScoreCard(name: String, score: Int, color: Color, active: Boolean, modifier: Modifier) = Surface(modifier, color = if (active) color else Color(0xFF252A50), shape = RoundedCornerShape(16.dp)) { Column(Modifier.padding(13.dp), horizontalAlignment = Alignment.CenterHorizontally) { Text(name, fontSize = 11.sp, fontWeight = FontWeight.Bold); Text("$score", fontSize = 32.sp, fontWeight = FontWeight.Black) } }
-
